@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="src/script.js">
-    </script>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/style.css">
     <title>Bracket count page</title>
 </head>
 <body>
-    
+    <div id="container">
+        <div id="counter">
+            <h1>Even or odd?</h1>
+            <form id="form">
+                <input id="text" type="text" placeholder="(()(()()()" value="">
+                <button id="submit-btn" type="button" onclick="checkEven()">Let's count!</button>
+            </form>
+            <p id='output'>Let's see..</p>
+        </div>
+    </div>
 </body>
+<script src="src/script.js"></script>
 </html>
