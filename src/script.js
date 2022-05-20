@@ -13,7 +13,12 @@ function checkEven () {
       }
     let output = "";
     if (brace1 === brace2)
-        output = "Even!"
-    else output = "Odd!"
+        output = "All good!"
+    else if (brace1 > brace2) {
+        if (brace1 - brace2 > 1) {
+            output = `You need ${brace1 - brace2} more closed braces`
+        } else output = `You need 1 more closed brace`
+    } else if (brace2 - brace1 > 1) {output = `You need ${brace2 - brace1} more open braces`}
+    else output = `You need 1 more open brace`
     document.getElementById("output").innerHTML = output;
 }
