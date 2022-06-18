@@ -1,38 +1,37 @@
 function checkParanthesis () {
-    let list = document.getElementById('text').value;
-    let cleanList = [];
-    let x = 0;
+    let list = document.getElementById('text').value,
+        outputElm = document.getElementById('output');
 
-    if (list == 0) {
-        document.getElementById("output").innerHTML = ("Type smth first!");
-        return
-    } else {
+    list == 0 ? showMessage("Type smth first!") : counter(list) 
+
+    function counter(list){
+        let cleanList = [], x = 0;
+        
         for (i in list) {
             if (list[i] == '(' || list[i] == ')') {
                 cleanList[x] = list[i];
-                x++;
+                x++
+            }
+        }
+
+        if (cleanList.length % 2 != 0)
+            showMessage('Not even!')
+        else {
+            let bracesCounter = 0;
+            for (let key in cleanList) {
+                cleanList[key] == '(' ? bracesCounter++ : bracesCounter-- ;
+                if (bracesCounter < 0) {
+                    showMessage('Too much closed braces!');
+                    break
+                }
+                if (bracesCounter == 0)
+                    showMessage('Great!');
+                else showMessage('Too much open braces!')
             }
         }
     }
-    if (cleanList.length % 2 != 0)
-        output = 'Not even!'
-    else {
-        let bracesCounter = 0;
-        for (let key in cleanList) {
-            if (cleanList[key] == '(') {
-                bracesCounter++;
-            }
-            if (cleanList[key] == ')') {
-                bracesCounter--;
-            }
-            if (bracesCounter < 0) {
-                output = 'Too much closed braces!'
-                break
-            }
-            if (bracesCounter == 0)
-                output = 'Great!'
-            else output = 'Too much open braces!'
+
+    function showMessage(message) {
+            outputElm.innerHTML = message;
         }
-    }
-    document.getElementById("output").innerHTML = output;
 }
